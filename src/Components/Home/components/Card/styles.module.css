@@ -1,0 +1,33 @@
+.price {
+    color: #2196f3;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.card {
+    width: 500px;
+    padding: 20px 20px 5px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.Cardlogo {
+    height: 36px;
+    width: 110px;
+    background-image: url('../../../../images/S7-Logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.ticketinfo {
+    display: flex;
+    justify-content: space-between;
+}

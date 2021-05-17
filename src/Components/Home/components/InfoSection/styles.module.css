@@ -1,0 +1,14 @@
+.title {
+    color: gray;
+    text-transform: uppercase;
+    /* font-weight: 10px;
+     */
+    
+     font-size: 12px;
+    }
+    
+    .value {
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 12px;
+}
