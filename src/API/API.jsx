@@ -3,7 +3,8 @@ export function getId() {
       .then((response) => {
         return response.json();
       })
-      .then((data) => {;
+      .then((data) => {
+        console.log(data, 'data0')
         return data;
       });
   }
@@ -15,7 +16,8 @@ export function getId() {
       .then((response) => {
         return response.json();
       })
-      .then((data) => {;
+      .then((data) => {
+        console.log(data, 'data')
         return data;
       });
   }

@@ -6,3 +6,18 @@
 .cards {
     display: block;
 }
+
+.addButton {
+    background-color: #2196f3;
+    width: 100%;
+    margin-bottom: 30px;
+    color: white;
+    border: none;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.addButton:hover {
+    background-color: #007de2;
+}

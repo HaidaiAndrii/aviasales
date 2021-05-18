@@ -2,7 +2,6 @@ import { useState } from "react";
 import styles from "./styles.module.css";
 
 export function CountFillter({ values, selectedFillters, setFillter }) {
-  // let [selectedFillters, setFillter] = useState([]);
 
   function addFillter(value) {
     if (selectedFillters.includes(value)) {
@@ -17,11 +16,11 @@ export function CountFillter({ values, selectedFillters, setFillter }) {
   return (
     <div className={styles.wrapper}>
       <h3 className={styles.title}>{values.title}</h3>
-      {values.inputs.map((value) => (
-        <div className={styles.inputWrapper}>
+      {values.inputs.map((value, i) => (
+        <div className={styles.inputWrapper} key={value} >
           <input
             type="checkbox"
-            name={value.slice(0,1)}
+            name={i}
             id={value}
             className={styles.input}
             onChange={(e) => addFillter(parseInt(e.target.name))}

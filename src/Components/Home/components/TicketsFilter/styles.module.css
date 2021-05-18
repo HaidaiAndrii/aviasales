@@ -1,0 +1,20 @@
+.button {
+    height: 50px;
+    width: 33.3%;
+    border: 1px solid rgb(194, 193, 193);
+    background-color: white;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.button:hover {
+    background-color: #2196F3;
+    color: white;
+}
+
+.section {
+    width: 100%;
+    margin-bottom: 20px;
+}

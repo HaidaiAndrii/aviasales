@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import { InfoSection } from "../InfoSection/InfoSection";
 
 export function Card({ ticket }) {
-  console.log(ticket);
+  let [change, watchChange] = useState(false); 
+
+  useEffect(() => {
+    watchChange(!change);
+  }, [ticket]);
+
 
   String.prototype.toHHMMSS = function () {
     var sec_num = parseInt(this, 10);
@@ -39,12 +44,6 @@ export function Card({ ticket }) {
     while (endHour >= 24) {
       endHour -= 24;
     }
-
-    console.log(
-      endMinutes,
-      minutes,
-      parseInt(`${dateFormat.duration}`.toHHMMSS().slice(4, 6))
-    );
 
     if (endHour < 10) {
       endHour = `0${endHour}`;
