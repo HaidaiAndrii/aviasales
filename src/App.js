@@ -1,6 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from "react";
-// import { ProvideAuth } from "./hooks/hook-auth";
+import React from "react";
 
 import {
   BrowserRouter as Router,
@@ -15,9 +14,6 @@ import { useAuth } from "./hooks/hook-auth.js";
 
 function App() {
   const { user, signout } = useAuth();
-  // const auth = useAuth();
-
-  // console.log(auth)
 
   return (
 

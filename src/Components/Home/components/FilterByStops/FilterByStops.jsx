@@ -1,7 +1,6 @@
-import { useState } from "react";
 import styles from "./styles.module.css";
 
-export function CountFillter({ values, selectedFillters, setFillter }) {
+export function FilterByStops({ values, selectedFillters, setFillter }) {
 
   function addFillter(value) {
     if (selectedFillters.includes(value)) {

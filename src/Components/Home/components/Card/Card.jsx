@@ -1,17 +1,10 @@
-import { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import { InfoSection } from "../InfoSection/InfoSection";
 
 export function Card({ ticket }) {
-  let [change, watchChange] = useState(false); 
 
-  useEffect(() => {
-    watchChange(!change);
-  }, [ticket]);
-
-
-  String.prototype.toHHMMSS = function () {
-    var sec_num = parseInt(this, 10);
+  function toHHMMSS(value) {
+    var sec_num = parseInt(value, 10);
     var minutes = Math.floor(sec_num / 60);
     var seconds = sec_num - minutes * 60;
 
@@ -24,16 +17,20 @@ export function Card({ ticket }) {
     return `${minutes}ч ${seconds}м`;
   };
 
-  function getTimeObj(dateFormat) {
+  function checkTime(value) {
+    return  value > 10 ? value : `0${value}`;
+  }
+
+  function getTime(dateFormat) {
     let date = new Date(dateFormat.date);
     let hour = date.getHours();
     let minutes = date.getMinutes();
 
     let endHour =
-      parseInt(`${dateFormat.duration}`.toHHMMSS().slice(0, 2)) +
+      parseInt(toHHMMSS(`${dateFormat.duration}`).slice(0, 2)) +
       parseInt(hour);
     let endMinutes =
-      parseInt(`${dateFormat.duration}`.toHHMMSS().slice(4, 6)) +
+      parseInt(toHHMMSS(`${dateFormat.duration}`).slice(4, 6)) +
       parseInt(minutes);
 
     while (endMinutes >= 60) {
@@ -45,21 +42,7 @@ export function Card({ ticket }) {
       endHour -= 24;
     }
 
-    if (endHour < 10) {
-      endHour = `0${endHour}`;
-    }
-    if (endMinutes < 10) {
-      endMinutes = `0${endMinutes}`;
-    }
-
-    if (hour < 10) {
-      hour = `0${hour}`;
-    }
-    if (minutes < 10) {
-      minutes = `0${minutes}`;
-    }
-
-    return `${hour}:${minutes} - ${endHour}:${endMinutes}`;
+    return `${checkTime(hour)}:${checkTime(minutes)} - ${checkTime(endHour)}:${checkTime(endMinutes)}`;
   }
 
   function getDatetitle(segments) {
@@ -76,11 +59,11 @@ export function Card({ ticket }) {
       <div className={styles.ticketinfo}>
         <div>
           <InfoSection
-            value={getTimeObj(ticket.segments[0])}
+            value={getTime(ticket.segments[0])}
             title={getDatetitle(ticket.segments[0])}
           />
           <InfoSection
-            value={getTimeObj(ticket.segments[1])}
+            value={getTime(ticket.segments[1])}
             title={getDatetitle(ticket.segments[1])}
           />
         </div>
@@ -88,13 +71,12 @@ export function Card({ ticket }) {
         <div>
           <InfoSection
             title={`в пути`}
-            value={`${ticket.segments[0].duration}`.toHHMMSS()}
+            value={toHHMMSS(`${ticket.segments[0].duration}`)}
           />
           <InfoSection
             title={`в пути`}
-            value={`${ticket.segments[1].duration}`.toHHMMSS()}
+            value={toHHMMSS(`${ticket.segments[1].duration}`)}
           />
-          {/* <InfoSection  /> */}
         </div>
 
         <div>
